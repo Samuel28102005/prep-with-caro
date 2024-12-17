@@ -9,10 +9,15 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./lista.component.css']
 })
 export class ListaComponent {
-  obs!:Observable<Root>
+  obs!:Observable<Root>;
+  dati :any
 constructor(private http: HttpClient){
   
   this.obs = this.http.get<Root>('https://pokeapi.co/api/v2/type')
+  this.obs.subscribe(this.ciao)
   
+}
+ciao=(data:any)=>{
+  this.dati = data
 }
 }
